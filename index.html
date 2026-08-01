@@ -69,184 +69,179 @@
         .stats-img {
             width: 60px;
         }
-    </style>
-</head>
 
-<body>
-
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floating Side Icons</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS for Side Icons -->
-    <style>
-        /* Side icons container */
-        .side-icons {
+        /* ===== PROJECT MODAL ("Show More") ===== */
+        .project-modal-overlay {
+            display: none;
             position: fixed;
-            top: 50%;
-            left: 10px;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 1000;
-        }
-
-        /* Each icon link */
-        .side-icons a {
-            display: flex;
+            inset: 0;
+            background: rgba(20, 20, 30, 0.55);
+            z-index: 2000;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            transition: border 0.3s, transform 0.3s;
-            background-color: #ffffff; /* optional: gives white background to icons */
+            padding: 24px;
         }
 
-        /* Hover effect: violet border + slight zoom */
-        .side-icons a:hover {
-            border: 2px solid #7393ff;
-            transform: scale(1.1);
+        .project-modal-box {
+            background: #fff;
+            width: 100%;
+            max-width: 1000px;
+            max-height: 88vh;
+            overflow-y: auto;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            position: relative;
+            animation: modalPop 0.25s ease;
         }
 
-        /* Icon images fit inside circle */
-        .side-icons img {
-            width: 60%;
-            height: 60%;
+        @keyframes modalPop {
+            from { transform: scale(0.96); opacity: 0; }
+            to   { transform: scale(1); opacity: 1; }
         }
-    </style>
-</head>
-<body>
 
-    <!-- Floating Side Icons -->
-   <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floating Side Icons</title>
+        .project-modal-close {
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            line-height: 1;
+            color: #555;
+            cursor: pointer;
+            z-index: 5;
+        }
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        .project-modal-close:hover { color: #000; }
 
-    <!-- Custom CSS for Side Icons -->
-    <style>
-        /* Side icons container */
-        .side-icons {
-            position: fixed;
-            top: 50%;
-            left: 10px;
-            transform: translateY(-50%);
+        .project-modal-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .project-modal-left {
+            flex: 1 1 380px;
+            padding: 48px 40px;
+        }
+
+        .project-modal-badge {
+            display: inline-block;
+            background: #eef2ff;
+            color: #3D2DFD;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 8px 18px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .project-modal-left h2 {
+            font-weight: 700;
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #111;
+        }
+
+        .project-modal-left p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 28px;
+        }
+
+        .project-modal-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .project-modal-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .project-modal-btn.linkedin-btn {
+            background: #eaf1ff;
+            color: #0a66c2;
+        }
+
+        .project-modal-btn.linkedin-btn:hover { background: #dbe9ff; }
+
+        .project-modal-btn.github-btn {
+            background: #eafbef;
+            color: #1a8a3d;
+        }
+
+        .project-modal-btn.github-btn:hover { background: #d9f6e2; }
+
+        .project-modal-right {
+            flex: 1 1 380px;
+            background: #f5f5f7;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            z-index: 1000;
-        }
-
-        /* Each icon link */
-        .side-icons a {
-            display: flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            transition: border 0.3s, transform 0.3s;
-            background-color: #ffffff; /* optional: white circle */
+            position: relative;
+            padding: 40px 60px;
+            border-top-right-radius: 24px;
+            border-bottom-right-radius: 24px;
         }
 
-        /* Hover effect: violet border + subtle zoom */
-        .side-icons a:hover {
-            border: 2px solid #8a2be2; /* violet color */
-            transform: scale(1.1);
+        .project-modal-image {
+            width: 100%;
+            max-height: 340px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
         }
 
-        /* Icon images fit neatly inside circle */
-        .side-icons img {
-            width: 60%;
-            height: 60%;
+        .project-modal-caption {
+            margin-top: 14px;
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
         }
-    </style>
-</head>
-<body>
 
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Floating Side Icons</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS for Side Icons -->
-    <style>
-        /* Side icons container */
-        .side-icons {
-            position: fixed;
+        .carousel-arrow {
+            position: absolute;
             top: 50%;
-            left: 10px;
             transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 1000;
-        }
-
-        /* Each icon link */
-        .side-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
+            background: #fff;
+            border: none;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
-            border: 2px solid transparent;
-            transition: border 0.3s, transform 0.3s;
-            background-color: #ffffff; /* optional: white circle */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            z-index: 2;
         }
 
-        /* Hover effect: violet border + subtle zoom */
-        .side-icons a:hover {
-            border: 2px solid #8a2be2; /* violet color */
-            transform: scale(1.1);
-        }
+        .carousel-arrow:hover { background: #eef2ff; color: #3D2DFD; }
 
-        /* Icon images fit neatly inside circle */
-        .side-icons img {
-            width: 60%;
-            height: 60%;
+        .carousel-arrow.left { left: 16px; }
+        .carousel-arrow.right { right: 16px; }
+
+        @media (max-width: 767px) {
+            .project-modal-right {
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 24px;
+                padding: 30px;
+            }
         }
     </style>
 </head>
+
 <body>
-
-    <!-- Floating Side Icons -->
-    <div class="side-icons">
-        <a href="#Intro"><img src="home.png" alt="Home"></a>
-        <a href="#about-me"><img src="user.png" alt="Profile"></a>
-        <a href="#projects"><img src="folder-open.png" alt="Projects"></a>
-        <a href="#Certificates"><img src="trophy.png" alt="Awards"></a>
-        <a href="#contact"><img src="envelope.png" alt="Mail"></a>
-    </div>
-
-    <!-- Optional: Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
-
-
 
     <!-- HERO SECTION -->
     <section  id = "Intro" class="hero container">
@@ -326,10 +321,6 @@
 
         </div>
     </section>
-
-
-</body>
-</html>
 
 <!-- ABOUT SECTION -->
 <section id="about-me" class="py-5" style="background-color:#ffffff;">
@@ -574,7 +565,7 @@
 
             <h5 class="fw-bold">Product Market Fit Research for Air Purifier Development Using AQI Analytics</h5>
             <p class="text-muted" style="font-size:14px;">
-                “AirPure Innovations” is a startup born out of the air quality crisis in India. The company is in the early stages of product development and is unsure whether there is a strong, sustained demand for its air purifier product.
+                "AirPure Innovations" is a startup born out of the air quality crisis in India. The company is in the early stages of product development and is unsure whether there is a strong, sustained demand for its air purifier product.
             </p>
 
             <a href="https://github.com/bhawna407/Air-Pollution-Product-Fit-Check-"
@@ -599,7 +590,7 @@
               AtliQo is one of the leading telecom providers in India and launched its 5G plans in May 2022, along with other telecom providers.
 
 
-However, the management noticed a decline in their active users and revenue growth post 5G launch in May 2022. AtliQo’s business director requested their analytics team to provide a comparison report of KPIs between pre and post-periods of the 5G launch.
+However, the management noticed a decline in their active users and revenue growth post 5G launch in May 2022. AtliQo's business director requested their analytics team to provide a comparison report of KPIs between pre and post-periods of the 5G launch.
             </p>
 
             <a href="https://github.com/bhawna407/AtliqO-5G-Telecom"
@@ -665,9 +656,8 @@ However, the management noticed a decline in their active users and revenue grow
         <p>AtliQ Mart — a Gujarat-based FMCG manufacturer — was losing key customer contracts due to delivery failures. Products were consistently arriving late or incomplete, silently eroding trust before management even knew. Built a daily supply chain tracking system measuring OT%, IF%, and OTIF% per customer against set targets — surfacing exactly which customers, cities, and product lines were breaching SLAs, so the team could fix service gaps before a planned 2-city expansion.<p>
           </p>
         </p>
-        <a href="https://github.com/bhawna407/SUPPLY-CHAIN-MANAGEMENT"
-           target="_blank"
-           class="btn btn-outline-primary rounded-4 px-3">See My Work</a>
+        <button type="button" onclick="openProjectModal('supply-chain')"
+           class="btn btn-outline-primary rounded-4 px-3">Show More</button>
         <span class="float-end">
           <img src="https://img.icons8.com/color/96/power-bi.png" width="28">
         </span>
@@ -705,7 +695,7 @@ However, the management noticed a decline in their active users and revenue grow
       <div class="card-body">
         <h5 class="fw-bold">Quantium Virtual Internship</h5>
         <p class="text-muted" style="font-size:14px;">
-          Analyzed an online retail store’s performance data to uncover the key factors influencing revenue growth. Evaluated sales trends, customer behavior, product performance, and marketing effectiveness to generate actionable insights. Delivered strategic recommendations to support executive decision-making and optimize next-year planning.
+          Analyzed an online retail store's performance data to uncover the key factors influencing revenue growth. Evaluated sales trends, customer behavior, product performance, and marketing effectiveness to generate actionable insights. Delivered strategic recommendations to support executive decision-making and optimize next-year planning.
         </p>
         <a href="https://github.com/bhawna407/Python-Project-"
            target="_blank"
@@ -717,17 +707,8 @@ However, the management noticed a decline in their active users and revenue grow
     </div>
   </div>
 
-  <!-- Optional Third Card -->
-  <!-- Add col-md-4 here if needed -->
 </div>
 
-
-      <!-- Card 5 -->
-      <div class="col-md-6">
-        <div class="card shadow-sm border-0 rounded-4">
-          <img src="YOUR_IMAGE_5.jpg" class="card-img-top rounded-top-4" alt="">
-        </div>
-      </div>
 
     </div>
 
@@ -890,3 +871,109 @@ However, the management noticed a decline in their active users and revenue grow
 
 </div>
 </div>
+</section>
+
+<!-- ====================== PROJECT "SHOW MORE" MODAL ====================== -->
+<div id="projectModal" class="project-modal-overlay" onclick="closeProjectModal(event)">
+  <div class="project-modal-box" onclick="event.stopPropagation()">
+    <button class="project-modal-close" onclick="closeProjectModal()">&times;</button>
+
+    <div class="project-modal-content">
+
+      <!-- Left: details -->
+      <div class="project-modal-left">
+        <span class="project-modal-badge" id="modalBadge">Power BI Project</span>
+        <h2 id="modalTitle">Project Title</h2>
+        <p id="modalDescription">Project description goes here.</p>
+
+        <div class="project-modal-buttons">
+          <a id="modalLinkedin" href="#" target="_blank" class="project-modal-btn linkedin-btn">
+            <i class="bi bi-linkedin"></i> View Project Engagement
+          </a>
+          <a id="modalGithub" href="#" target="_blank" class="project-modal-btn github-btn">
+            <i class="bi bi-github"></i> View Project on GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: image carousel -->
+      <div class="project-modal-right">
+        <button class="carousel-arrow left" onclick="prevProjectSlide()">&#10094;</button>
+        <img id="modalImage" src="" class="project-modal-image" alt="Project visual">
+        <button class="carousel-arrow right" onclick="nextProjectSlide()">&#10095;</button>
+        <p class="project-modal-caption" id="modalCaption">Slide caption</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // Add one entry per project. Key = whatever you pass to openProjectModal('key')
+  const projectModalData = {
+    'supply-chain': {
+      badge: 'Power BI Project',
+      title: 'AtliQ Mart: Supply Chain Management',
+      description: "AtliQ Mart — a Gujarat-based FMCG manufacturer — was losing key customer contracts due to delivery failures. Products were consistently arriving late or incomplete, silently eroding trust before management even knew. Built a daily supply chain tracking system measuring OT%, IF%, and OTIF% per customer against set targets — surfacing exactly which customers, cities, and product lines were breaching SLAs, so the team could fix service gaps before a planned 2-city expansion.",
+      linkedin: "https://www.linkedin.com/in/bhawna-kaushik-4132b4291/",
+      github: "https://github.com/bhawna407/SUPPLY-CHAIN-MANAGEMENT",
+      images: [
+        { src: "DATA_MODEL_SUPPLY_CHAIN_MANAG.png", caption: "Data Model" },
+        { src: "executive_summary_supply_chain_mang.png", caption: "Executive Summary Dashboard" }
+      ]
+    }
+  };
+
+  let activeProject = null;
+  let activeSlide = 0;
+
+  function openProjectModal(key) {
+    activeProject = projectModalData[key];
+    if (!activeProject) return;
+    activeSlide = 0;
+
+    document.getElementById('modalBadge').innerText = activeProject.badge;
+    document.getElementById('modalTitle').innerText = activeProject.title;
+    document.getElementById('modalDescription').innerText = activeProject.description;
+    document.getElementById('modalLinkedin').href = activeProject.linkedin;
+    document.getElementById('modalGithub').href = activeProject.github;
+
+    updateProjectSlide();
+
+    document.getElementById('projectModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProjectModal(e) {
+    if (e && e.target !== e.currentTarget) return;
+    document.getElementById('projectModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  function updateProjectSlide() {
+    if (!activeProject) return;
+    const slide = activeProject.images[activeSlide];
+    document.getElementById('modalImage').src = slide.src;
+    document.getElementById('modalCaption').innerText = slide.caption;
+  }
+
+  function nextProjectSlide() {
+    if (!activeProject) return;
+    activeSlide = (activeSlide + 1) % activeProject.images.length;
+    updateProjectSlide();
+  }
+
+  function prevProjectSlide() {
+    if (!activeProject) return;
+    activeSlide = (activeSlide - 1 + activeProject.images.length) % activeProject.images.length;
+    updateProjectSlide();
+  }
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeProjectModal();
+  });
+</script>
+
+</body>
+</html>
