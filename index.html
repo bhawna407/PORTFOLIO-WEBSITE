@@ -85,13 +85,22 @@
         .project-modal-box {
             background: #fff;
             width: 100%;
-            max-width: 1000px;
-            max-height: 88vh;
+            max-width: 960px;
+            max-height: 85vh;
             overflow-y: auto;
             border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.25);
             position: relative;
             animation: modalPop 0.25s ease;
+            /* hide the scrollbar track but keep scrolling available if content ever overflows */
+            scrollbar-width: none;        /* Firefox */
+            -ms-overflow-style: none;     /* old Edge/IE */
+        }
+
+        .project-modal-box::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;                /* Chrome/Safari */
         }
 
         @keyframes modalPop {
@@ -117,12 +126,17 @@
         .project-modal-content {
             display: flex;
             flex-wrap: wrap;
+            align-items: stretch;
             gap: 0;
+            min-height: 460px;
         }
 
         .project-modal-left {
             flex: 1 1 380px;
-            padding: 48px 40px;
+            padding: 40px 38px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .project-modal-badge {
@@ -130,24 +144,26 @@
             background: #eef2ff;
             color: #3D2DFD;
             font-weight: 600;
-            font-size: 14px;
-            padding: 8px 18px;
+            font-size: 13px;
+            padding: 7px 16px;
             border-radius: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+            width: fit-content;
         }
 
         .project-modal-left h2 {
             font-weight: 700;
-            font-size: 30px;
-            margin-bottom: 20px;
+            font-size: 26px;
+            line-height: 1.25;
+            margin-bottom: 16px;
             color: #111;
         }
 
         .project-modal-left p {
-            font-size: 15px;
-            line-height: 1.8;
+            font-size: 14.5px;
+            line-height: 1.7;
             color: #444;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         .project-modal-buttons {
@@ -189,14 +205,14 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 40px 60px;
+            padding: 36px 54px;
             border-top-right-radius: 24px;
             border-bottom-right-radius: 24px;
         }
 
         .project-modal-image {
             width: 100%;
-            max-height: 340px;
+            max-height: 300px;
             object-fit: contain;
             border-radius: 12px;
             background: #fff;
@@ -617,7 +633,8 @@ However, the management noticed a decline in their active users and revenue grow
         <p class="text-muted" style="font-size:14px;">
           Geospatial Analysis focused on improving the delivery by finding the best routes using LLM. They want to introduce a new line of credit cards, aiming to broaden its product offerings and reach in the financial market.
         </p>
-        <a href="https://github.com/bhawna407/Geospatial-Analysis/tree/main" class="btn btn-outline-primary rounded-4 px-3">See My Work</a>
+        <button type="button" onclick="openProjectModal('geospatial')"
+           class="btn btn-outline-primary rounded-4 px-3">Show More</button>
         <span class="float-end">
           <img src="https://img.icons8.com/color/96/microsoft-excel-2019--v1.png" width="28">
         </span>
@@ -921,6 +938,19 @@ However, the management noticed a decline in their active users and revenue grow
         { src: "DATA MODEL SUPPLY CHAIN MANAG.png", caption: "Data Model" },
         { src: "executive summary supply chain mang.png", caption: "Executive Summary Dashboard" }
       ]
+    },
+    'geospatial': {
+      badge: 'Excel Project',
+      title: 'Geospatial Analysis',
+      description: "Geospatial Analysis focused on improving the delivery by finding the best routes using LLM. They want to introduce a new line of credit cards, aiming to broaden its product offerings and reach in the financial market.",
+      linkedin: "https://www.linkedin.com/in/bhawna-kaushik-4132b4291/",
+      github: "https://github.com/bhawna407/Geospatial-Analysis/tree/main",
+      images: [
+        { src: "geospatial_analysis_Pg_1.png", caption: "Executive Summary" },
+        { src: "geospatial_analysis_Pg_2.png", caption: "Centre-of-Gravity Model Detail" },
+        { src: "geospatial_analysis_Pg_3.png", caption: "Cost Saving Model" },
+        { src: "geospatial_analysis_PBIX.png", caption: "Warehouse Recommendation Dashboard" }
+      ]
     }
   };
 
@@ -939,6 +969,11 @@ However, the management noticed a decline in their active users and revenue grow
     document.getElementById('modalGithub').href = activeProject.github;
 
     updateProjectSlide();
+
+    const showArrows = activeProject.images.length > 1;
+    document.querySelectorAll('.carousel-arrow').forEach(function (btn) {
+      btn.style.display = showArrows ? 'block' : 'none';
+    });
 
     document.getElementById('projectModal').style.display = 'flex';
     document.body.style.overflow = 'hidden';
